@@ -25,7 +25,29 @@ void add(stack_t **stack, __attribute__((unused)) unsigned int line_number)
  * @stack: double pointer to the first node
  * @line_number: the line number in the file
  */
-void nop(__attribute__((unused)) stack_t **stack, __attribute__((unused)) unsigned int line_number)
+void nop(__attribute__((unused)) stack_t **stack,
+		__attribute__((unused)) unsigned int line_number)
 {
 	return;
+}
+
+/**
+ * sub - subtracts the top element of the stack from
+ * the second top element of the stack
+ * @stack: double pointer to the first node
+ * @line_number: the line number in the file
+ */
+void sub(stack_t **stack, __attribute__((unused)) unsigned int line_number)
+{
+	stack_t *first, *second;
+
+	first = *stack;
+	second = first->next;
+
+	second->n -= first->n;
+	second->prev = NULL;
+
+	free(first);
+
+	*stack = second;
 }

@@ -64,6 +64,7 @@ void pop(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void swap(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void add(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void nop(stack_t **stack, __attribute__((unused)) unsigned int line_number);
+void sub(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void (*get_op_func(char *op_name))(stack_t **, unsigned int);
 void command_error(stack_t **stack, char *op_name,
 		unsigned int line_number, FILE *file);

@@ -18,6 +18,7 @@ void command_error(stack_t **stack, char *op_name,
 		{"pop", "can't pop an empty stack"},
 		{"swap", "can't swap, stack too short"},
 		{"add", "can't add, stack too short"},
+		{"sub", "can't sub, stack too short"},
 		{NULL, NULL}
 	};
 	int i = 0;
