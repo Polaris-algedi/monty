@@ -17,7 +17,7 @@ void execute(stack_t **stack, unsigned int line_number,
 	char *number = strtok(NULL, delimiter);
 	void (*fun_ptr)(stack_t **, unsigned int);
 	/* if there empty line */
-	if (function == NULL)
+	if (function == NULL || *function == '#')
 		return;
 	/* if opcode doesn't exist */
 	fun_ptr = get_op_func(function);
