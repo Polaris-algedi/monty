@@ -65,7 +65,7 @@ void mul(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	first = *stack;
 	second = first->next;
 
-	second->n *= first->n;
+	second->n = (second->n) * (first->n);
 	second->prev = NULL;
 
 	free(first);
