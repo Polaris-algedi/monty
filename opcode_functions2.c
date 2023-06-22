@@ -19,3 +19,13 @@ void add(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 
 	*stack = second;
 }
+
+/**
+ * nop - doesn’t do anything
+ * @stack: double pointer to the first node
+ * @line_number: the line number in the file
+ */
+void nop(__attribute__((unused)) stack_t **stack, __attribute__((unused)) unsigned int line_number)
+{
+	return;
+}
