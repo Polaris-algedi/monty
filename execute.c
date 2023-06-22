@@ -41,7 +41,8 @@ void execute(stack_t **stack, unsigned int line_number,
 		else
 			command_error(stack, function, line_number, file);
 	}
-	else if (strcmp(function, "swap") == 0 || strcmp(function, "add") == 0 || strcmp(function, "sub") == 0)
+	else if (strcmp(function, "swap") == 0 ||
+			strcmp(function, "add") == 0 || strcmp(function, "sub") == 0)
 	{
 		if (stack_len(*stack) > 1)
 			fun_ptr(stack, line_number);
