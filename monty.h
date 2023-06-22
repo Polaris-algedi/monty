@@ -8,6 +8,7 @@
 #include <unistd.h>
 
 #define MAX_LEN 256
+#define UNUSED __attribute__((unused))
 extern int n;
 
 
@@ -55,6 +56,19 @@ typedef struct ErrorInfo_s
 } ErrorInfo_t;
 
 
+/**
+ * struct conditions_s - opcode and its check functions
+ * @fun_name: the opcode
+ * @check1: function to handle the right opcode check
+ * @check2: function to handle the right opcode check
+ */
+typedef struct conditions_s
+{
+	const char *fun_name;
+	int (*check1)(stack_t **stack, char *number, int num);
+	int (*check2)(stack_t **stack, char *number, int num);
+} conditions_t;
+
 void free_stack(stack_t *head);
 size_t stack_len(const stack_t *h);
 void push(stack_t **stack, __attribute__((unused)) unsigned int line_number);
@@ -66,6 +80,10 @@ void add(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void nop(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void sub(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void (*get_op_func(char *op_name))(stack_t **, unsigned int);
+int (*get_op_check(char *op_name, int check_num))(stack_t **, char *, int);
+int isNotEmpty_st(stack_t **stack, UNUSED char *number, UNUSED int num);
+int notShort_st(stack_t **stack, UNUSED char *number, UNUSED int num);
+int isValidNum(UNUSED stack_t **stack, char *number, UNUSED int num);
 void command_error(stack_t **stack, char *op_name,
 		unsigned int line_number, FILE *file);
 void file_error(int num, char *file);

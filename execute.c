@@ -24,27 +24,9 @@ void execute(stack_t **stack, unsigned int line_number,
 	if (fun_ptr == NULL)
 		command_error(stack, function, line_number, file);
 
-	if (strcmp(function, "push") == 0)
+	if (get_op_check(function, 1))
 	{
-		if (number != NULL && (atoi(number) != 0 || *number == '0'))
-		{
-			n = atoi(number);
-			fun_ptr(stack, line_number);
-		}
-		else
-			command_error(stack, function, line_number, file);
-	}
-	else if (strcmp(function, "pint") == 0 || strcmp(function, "pop") == 0)
-	{
-		if (*stack != NULL)
-			fun_ptr(stack, line_number);
-		else
-			command_error(stack, function, line_number, file);
-	}
-	else if (strcmp(function, "swap") == 0 ||
-			strcmp(function, "add") == 0 || strcmp(function, "sub") == 0)
-	{
-		if (stack_len(*stack) > 1)
+		if (get_op_check(function, 1)(stack, number, 0))
 			fun_ptr(stack, line_number);
 		else
 			command_error(stack, function, line_number, file);
@@ -54,3 +36,32 @@ void execute(stack_t **stack, unsigned int line_number,
 
 }
 
+/**
+ * get_op_check - Selects the correct function to perform
+ * the right check for each opcode asked by the user
+ * @op_name: the opcode
+ * @check_num: the number of the check to be returned
+ *
+ * Return: A pointer to the function that corresponds to the
+ * opcode and check_num given as a parameter
+ */
+int (*get_op_check(char *op_name, int check_num))(stack_t **, char *, int)
+{
+	conditions_t ops[] = {
+		{"push", isValidNum, NULL},
+		{"pint", isNotEmpty_st, NULL},
+		{"pop", isNotEmpty_st, NULL},
+		{"swap", notShort_st, NULL},
+		{"add", notShort_st, NULL},
+		{"sub", notShort_st, NULL},
+		{NULL, NULL, NULL}
+	};
+	int i = 0;
+
+	while (ops[i].fun_name != NULL && (strcmp(ops[i].fun_name, op_name) != 0))
+		i++;
+	if (check_num == 1)
+		return (ops[i].check1);
+	else
+		return (ops[i].check2);
+}
