@@ -50,6 +50,7 @@ void (*get_op_func(char *op_name))(stack_t **, unsigned int)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
+		{"mul", mul},
 		{NULL, NULL}
 	};
 	int i = 0;

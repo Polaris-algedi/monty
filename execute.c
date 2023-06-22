@@ -54,6 +54,7 @@ int (*get_op_check(char *op_name, int check_num))(stack_t **, char *, int)
 		{"swap", notShort_st, NULL},
 		{"add", notShort_st, NULL},
 		{"sub", notShort_st, NULL},
+		{"mul", notShort_st, NULL},
 		{NULL, NULL, NULL}
 	};
 	int i = 0;

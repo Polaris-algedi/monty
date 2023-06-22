@@ -19,6 +19,7 @@ void command_error(stack_t **stack, char *op_name,
 		{"swap", "can't swap, stack too short"},
 		{"add", "can't add, stack too short"},
 		{"sub", "can't sub, stack too short"},
+		{"mul", "can't mul, stack too short"},
 		{NULL, NULL}
 	};
 	int i = 0;

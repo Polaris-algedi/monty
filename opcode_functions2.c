@@ -50,3 +50,25 @@ void sub(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 
 	*stack = second;
 }
+
+/**
+ * mul - multiplies the second top element of
+ * the stack with the top element of the stack
+ * the second top element of the stack
+ * @stack: double pointer to the first node
+ * @line_number: the line number in the file
+ */
+void mul(stack_t **stack, __attribute__((unused)) unsigned int line_number)
+{
+	stack_t *first, *second;
+
+	first = *stack;
+	second = first->next;
+
+	second->n *= first->n;
+	second->prev = NULL;
+
+	free(first);
+
+	*stack = second;
+}
