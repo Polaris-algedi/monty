@@ -24,7 +24,15 @@ void execute(stack_t **stack, unsigned int line_number,
 	if (fun_ptr == NULL)
 		command_error(stack, function, line_number, file);
 
-	if (get_op_check(function, 1))
+	if (get_op_check(function, 1) && get_op_check(function, 2))
+	{
+		if (!get_op_check(function, 1)(stack, number, 0))
+			command_error(stack, function, line_number, file);
+		if (!get_op_check(function, 2)(stack, number, 0))
+			command_error2(stack, function, line_number, file);
+		fun_ptr(stack, line_number);
+	}
+	else if (get_op_check(function, 1))
 	{
 		if (get_op_check(function, 1)(stack, number, 0))
 			fun_ptr(stack, line_number);
@@ -55,6 +63,7 @@ int (*get_op_check(char *op_name, int check_num))(stack_t **, char *, int)
 		{"add", notShort_st, NULL},
 		{"sub", notShort_st, NULL},
 		{"mul", notShort_st, NULL},
+		{"div", notShort_st, div_by0},
 		{NULL, NULL, NULL}
 	};
 	int i = 0;

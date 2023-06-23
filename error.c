@@ -20,6 +20,7 @@ void command_error(stack_t **stack, char *op_name,
 		{"add", "can't add, stack too short"},
 		{"sub", "can't sub, stack too short"},
 		{"mul", "can't mul, stack too short"},
+		{"div", "can't div, stack too short"},
 		{NULL, NULL}
 	};
 	int i = 0;
@@ -38,6 +39,36 @@ void command_error(stack_t **stack, char *op_name,
 	exit(EXIT_FAILURE);
 }
 
+/**
+ * command_error - handles error conditions for specific
+ * stack operations based on the provided op_name (operation name)
+ * @stack: double pointer to the first node
+ * @op_name: the opcode
+ * @line_number: the line number in the file
+ * @file: monty byte code file pointer
+ */
+void command_error2(stack_t **stack, char *op_name,
+		unsigned int line_number, FILE *file)
+{
+	ErrorInfo_t errors[] = {
+		{"div", "division by zero"},
+		{NULL, NULL}
+	};
+	int i = 0;
+
+	while (errors[i].fun_name != NULL &&
+			(strcmp(errors[i].fun_name, op_name) != 0))
+		i++;
+
+	if (errors[i].fun_name != NULL)
+		fprintf(stderr, "L%u: %s\n", line_number, errors[i].error_message);
+	else
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, op_name);
+
+	free_stack(*stack);
+	fclose(file);
+	exit(EXIT_FAILURE);
+}
 
 /**
  * file_error - handles different error cases based on

@@ -97,4 +97,3 @@ void swap(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 
 	*stack = second;
 }
-

@@ -47,3 +47,16 @@ int isValidNum(__attribute__((unused)) stack_t **stack,
 	}
 	return (0);
 }
+
+/**
+ * div_by0 - checks if the top element of the stack isn't 0
+ * @stack: double pointer to the first node
+ * @number: string representation of a number
+ * @num: integer
+ *
+ * Return: the check's result
+ */
+int div_by0(stack_t **stack, UNUSED char *number, UNUSED int num)
+{
+	return((*stack)->n != 0);
+}
