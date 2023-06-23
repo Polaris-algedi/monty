@@ -60,3 +60,18 @@ int div_by0(stack_t **stack, UNUSED char *number, UNUSED int num)
 {
 	return ((*stack)->n != 0);
 }
+
+/**
+ * isInAscii - checks if the value is not in the ascii table
+ * @stack: double pointer to the first node
+ * @number: string representation of a number
+ * @num: integer
+ *
+ * Return: the check's result
+ */
+int isInAscii(stack_t **stack, UNUSED char *number, UNUSED int num)
+{
+	stack_t *top = *stack;
+
+	return (top->n >= 0 || top->n <= 127);
+}

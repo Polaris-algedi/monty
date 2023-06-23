@@ -82,12 +82,14 @@ void sub(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void mul(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void div_o(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void mod(stack_t **stack, __attribute__((unused)) unsigned int line_number);
+void pchar(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void (*get_op_func(char *op_name))(stack_t **, unsigned int);
 int (*get_op_check(char *op_name, int check_num))(stack_t **, char *, int);
 int isNotEmpty_st(stack_t **stack, UNUSED char *number, UNUSED int num);
 int notShort_st(stack_t **stack, UNUSED char *number, UNUSED int num);
 int isValidNum(UNUSED stack_t **stack, char *number, UNUSED int num);
 int div_by0(stack_t **stack, UNUSED char *number, UNUSED int num);
+int isInAscii(stack_t **stack, UNUSED char *number, UNUSED int num);
 void command_error(stack_t **stack, char *op_name,
 		unsigned int line_number, FILE *file);
 void command_error2(stack_t **stack, char *op_name,

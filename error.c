@@ -22,6 +22,7 @@ void command_error(stack_t **stack, char *op_name,
 		{"mul", "can't mul, stack too short"},
 		{"div", "can't div, stack too short"},
 		{"mod", "can't mod, stack too short"},
+		{"pchar", "can't pchar, stack empty"},
 		{NULL, NULL}
 	};
 	int i = 0;
@@ -54,6 +55,7 @@ void command_error2(stack_t **stack, char *op_name,
 	ErrorInfo_t errors[] = {
 		{"div", "division by zero"},
 		{"mod", "division by zero"},
+		{"pchar", "can't pchar, value out of range"},
 		{NULL, NULL}
 	};
 	int i = 0;
