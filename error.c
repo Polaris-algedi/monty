@@ -21,6 +21,7 @@ void command_error(stack_t **stack, char *op_name,
 		{"sub", "can't sub, stack too short"},
 		{"mul", "can't mul, stack too short"},
 		{"div", "can't div, stack too short"},
+		{"mod", "can't mod, stack too short"},
 		{NULL, NULL}
 	};
 	int i = 0;
@@ -52,6 +53,7 @@ void command_error2(stack_t **stack, char *op_name,
 {
 	ErrorInfo_t errors[] = {
 		{"div", "division by zero"},
+		{"mod", "division by zero"},
 		{NULL, NULL}
 	};
 	int i = 0;

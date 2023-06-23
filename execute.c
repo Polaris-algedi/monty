@@ -64,6 +64,7 @@ int (*get_op_check(char *op_name, int check_num))(stack_t **, char *, int)
 		{"sub", notShort_st, NULL},
 		{"mul", notShort_st, NULL},
 		{"div", notShort_st, div_by0},
+		{"mod", notShort_st, div_by0},
 		{NULL, NULL, NULL}
 	};
 	int i = 0;
