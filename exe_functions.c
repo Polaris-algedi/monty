@@ -73,5 +73,5 @@ int isInAscii(stack_t **stack, UNUSED char *number, UNUSED int num)
 {
 	stack_t *top = *stack;
 
-	return (top->n >= 32 || top->n <= 127);
+	return (top->n >= 0 && top->n <= 127);
 }
