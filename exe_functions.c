@@ -58,5 +58,5 @@ int isValidNum(__attribute__((unused)) stack_t **stack,
  */
 int div_by0(stack_t **stack, UNUSED char *number, UNUSED int num)
 {
-	return((*stack)->n != 0);
+	return ((*stack)->n != 0);
 }
