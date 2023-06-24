@@ -85,6 +85,7 @@ void mod(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void pchar(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number);
+void rotr(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void (*get_op_func(char *op_name))(stack_t **, unsigned int);
 int (*get_op_check(char *op_name, int check_num))(stack_t **, char *, int);
 int isNotEmpty_st(stack_t **stack, UNUSED char *number, UNUSED int num);

@@ -71,3 +71,28 @@ void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 
 	current->n = top_num;
 }
+
+/**
+ * rotr - rotates the stack to the bottom
+ * @stack: double pointer to the first node
+ * @line_number: the line number in the file
+ */
+void rotr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
+{
+	stack_t *current = NULL, *penult = NULL, *first = NULL;
+
+	if (!(*stack) || stack_len(*stack) == 1)
+		return;
+
+	current = *stack;
+	while (current->next)
+		current = current->next;
+
+	penult = current->prev;
+	penult->next = NULL;
+	current->prev = NULL;
+	current->next = *stack;
+	first = *stack;
+	first->prev = current;
+	*stack = current;
+}

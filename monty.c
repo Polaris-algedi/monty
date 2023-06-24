@@ -56,6 +56,7 @@ void (*get_op_func(char *op_name))(stack_t **, unsigned int)
 		{"pchar", pchar},
 		{"pstr", pstr},
 		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 	int i = 0;
