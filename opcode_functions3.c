@@ -60,8 +60,12 @@ void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *current = NULL;
-	int top_num = (*stack)->n;
+	int top_num = 0;
 
+	if (!(*stack))
+		return;
+
+	top_num = (*stack)->n;
 	for (current = *stack; current->next; current = current->next)
 		current->n = current->next->n;
 
