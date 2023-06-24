@@ -32,3 +32,21 @@ void pchar(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 
 	printf("%c\n", top->n);
 }
+
+/**
+ * pstr - prints the string starting at the top of the stack,
+ * followed by a new line
+ * @stack: double pointer to the first node
+ * @line_number: the line number in the file
+ */
+void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
+{
+	stack_t *current = *stack;
+
+	while (current && current->n > 0 && current->n < 128)
+	{
+		printf("%c", current->n);
+		current = current->next;
+	}
+	printf("\n");
+}
