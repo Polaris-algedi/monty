@@ -50,3 +50,20 @@ void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	}
 	printf("\n");
 }
+
+
+/**
+ * rotl - rotates the stack to the top
+ * @stack: double pointer to the first node
+ * @line_number: the line number in the file
+ */
+void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
+{
+	stack_t *current = NULL;
+	int top_num = (*stack)->n;
+
+	for (current = *stack; current->next; current = current->next)
+		current->n = current->next->n;
+
+	current->n = top_num;
+}
