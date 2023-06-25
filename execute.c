@@ -56,7 +56,7 @@ void execute(stack_t **stack, unsigned int line_number,
 int (*get_op_check(char *op_name, int check_num))(stack_t **, char *, int)
 {
 	conditions_t ops[] = {
-		{"push", isValidNum, NULL},
+		{"push", isNumber, NULL},
 		{"pint", isNotEmpty_st, NULL},
 		{"pop", isNotEmpty_st, NULL},
 		{"swap", notShort_st, NULL},

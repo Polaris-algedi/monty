@@ -29,7 +29,7 @@ int notShort_st(stack_t **stack, __attribute__((unused))
 }
 
 /**
- * isValidNum - checks if a string representation of a number can be
+ * isNumber - checks if a string representation of a number can be
  * converted into an int
  * @stack: double pointer to the first node
  * @number: string representation of a number
@@ -37,15 +37,27 @@ int notShort_st(stack_t **stack, __attribute__((unused))
  *
  * Return: the check's result
  */
-int isValidNum(__attribute__((unused)) stack_t **stack,
-		char *number, __attribute__((unused)) int num)
+int isNumber(UNUSED stack_t **stack, char *number, UNUSED int num)
 {
-	if (number != NULL && (atoi(number) != 0 || *number == '0'))
+	char *start = number;
+	/* Handle empty string */
+	if (number == NULL || *number == '\0')
+		return (0);
+
+	/* Handle optional sign (+ or -) */
+	if (*number == '+' || *number == '-')
+		number++;
+
+	/* Check remaining characters */
+	while (*number != '\0')
 	{
-		n = atoi(number);
-		return (1);
+		if (*number < '0' || *number > '9')
+			return (0);
+
+		number++;
 	}
-	return (0);
+	n = atoi(start);
+	return (1);
 }
 
 /**

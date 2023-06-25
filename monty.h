@@ -90,7 +90,7 @@ void (*get_op_func(char *op_name))(stack_t **, unsigned int);
 int (*get_op_check(char *op_name, int check_num))(stack_t **, char *, int);
 int isNotEmpty_st(stack_t **stack, UNUSED char *number, UNUSED int num);
 int notShort_st(stack_t **stack, UNUSED char *number, UNUSED int num);
-int isValidNum(UNUSED stack_t **stack, char *number, UNUSED int num);
+int isNumber(UNUSED stack_t **stack, char *number, UNUSED int num);
 int div_by0(stack_t **stack, UNUSED char *number, UNUSED int num);
 int isInAscii(stack_t **stack, UNUSED char *number, UNUSED int num);
 void command_error(stack_t **stack, char *op_name,
