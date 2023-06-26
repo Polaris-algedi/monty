@@ -5,30 +5,35 @@
  * @stack: double pointer to the first node
  * @line_number: the line number in the file
  */
-void push(stack_t **stack, __attribute__((unused)) unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new = NULL, *next = NULL;
+	stack_t *stack2 = NULL, *current = *stack;
+	int n1 = n;
 
-	if (!stack)
-		exit(EXIT_FAILURE);
-
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+	if (line_number == 0)
+		add_node_top(stack, line_number);
+	else
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
+		/* Queue implementation using stack */
+
+		while (current)
+		{
+			n = current->n;
+			add_node_top(&stack2, line_number);
+			current = current->next;
+			pop(stack, line_number);
+		}
+		n = n1;
+		add_node_top(stack, line_number);
+		current = stack2;
+		while (current)
+		{
+			n = current->n;
+			add_node_top(stack, line_number);
+			current = current->next;
+			pop(&stack2, line_number);
+		}
 	}
-	/* set the new structure to point to the next one */
-	new->next = *stack;
-	new->prev = NULL;
-	new->n = n;
-	/* set the next structure to point to the previous one */
-	next = new->next;
-	if (next)
-		next->prev = new;
-	/* set the header pointer */
-	*stack = new;
 }
 
 /**

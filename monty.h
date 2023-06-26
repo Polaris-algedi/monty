@@ -71,6 +71,7 @@ typedef struct conditions_s
 
 void free_stack(stack_t *head);
 size_t stack_len(const stack_t *h);
+void add_node_top(stack_t **stack, UNUSED unsigned int line_number);
 void push(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void pall(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 void pint(stack_t **stack, __attribute__((unused)) unsigned int line_number);
@@ -99,7 +100,7 @@ void command_error2(stack_t **stack, char *op_name,
 		unsigned int line_number, FILE *file);
 void file_error(int num, char *file);
 void execute(stack_t **stack, unsigned int line_number,
-		char *command, FILE *file);
+		char *command, FILE *file, unsigned int *mode);
 void monty(char *filename);
 
 

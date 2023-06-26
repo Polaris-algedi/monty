@@ -7,10 +7,11 @@
  * @line_number: the line number in the file
  * @command: the instruction
  * @file: the bytecode file pointer
- *
+ * @mode: the value of 0 to represent a stack and
+ * the value of 1 to represent a queue
  */
 void execute(stack_t **stack, unsigned int line_number,
-		char *command, FILE *file)
+		char *command, FILE *file, unsigned int *mode)
 {
 	char *delimiter = " \t\n";
 	char *function = strtok(command, delimiter);
@@ -19,6 +20,16 @@ void execute(stack_t **stack, unsigned int line_number,
 	/* if there empty line */
 	if (function == NULL || *function == '#')
 		return;
+	if (strcmp(function, "queue") == 0)
+	{
+		*mode = 1;
+		return;
+	}
+	if (strcmp(function, "stack") == 0)
+	{
+		*mode = 0;
+		return;
+	}
 	/* if opcode doesn't exist */
 	fun_ptr = get_op_func(function);
 	if (fun_ptr == NULL)
@@ -30,17 +41,17 @@ void execute(stack_t **stack, unsigned int line_number,
 			command_error(stack, function, line_number, file);
 		if (!get_op_check(function, 2)(stack, number, 0))
 			command_error2(stack, function, line_number, file);
-		fun_ptr(stack, line_number);
+		fun_ptr(stack, *mode);
 	}
 	else if (get_op_check(function, 1))
 	{
 		if (get_op_check(function, 1)(stack, number, 0))
-			fun_ptr(stack, line_number);
+			fun_ptr(stack, *mode);
 		else
 			command_error(stack, function, line_number, file);
 	}
 	else
-		fun_ptr(stack, line_number);
+		fun_ptr(stack, *mode);
 
 }
 

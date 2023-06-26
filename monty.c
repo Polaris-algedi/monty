@@ -10,7 +10,7 @@ void monty(char *filename)
 {
 	FILE *file = NULL;
 	char buff[MAX_LEN];
-	unsigned int line = 0;
+	unsigned int line = 0, mode = 0;
 	stack_t *head = NULL;
 	/* open file */
 	file = fopen(filename, "r");
@@ -22,7 +22,7 @@ void monty(char *filename)
 	{
 		/* execute it */
 		line++;
-		execute(&head, line, buff, file);
+		execute(&head, line, buff, file, &mode);
 	}
 
 	free_stack(head);
